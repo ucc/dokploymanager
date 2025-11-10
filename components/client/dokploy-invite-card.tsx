@@ -12,11 +12,21 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 export default async function DokployInviteCard({ email }: { email: string }) {
+
+  const isInvited = false; //TODO: implement
+
   return (
     <div>
-      <Card className="w-full max-w-sm">
+      <Card className="w-full max-w-sm" style={{ margin: 'auto' }}>
         <CardHeader>
-          <CardTitle>Need a Dokploy account?</CardTitle>
+          {
+            isInvited ? (<>
+              <CardTitle>We have sent you an invite</CardTitle>
+          <CardDescription>Check your email... junk mail... No? Click the button again to send another one.</CardDescription>
+            </>) : (
+              <><CardTitle>Get your dokploy account!</CardTitle>
+          <CardDescription>We will send you an invite link to the email you have with UCC.</CardDescription></>)
+          }
         </CardHeader>
         <CardContent>
           <form>
@@ -34,6 +44,7 @@ export default async function DokployInviteCard({ email }: { email: string }) {
               </div>
             </div>
           </form>
+
         </CardContent>
       </Card>
     </div>
