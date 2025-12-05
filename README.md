@@ -11,6 +11,9 @@ KEYCLOAK_CLIENT_SECRET="client secret"
 KEYCLOAK_ISSUER="https://<keycloak url>/realms/<realm>"
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="<random secret>"
+DOKPLOY_API_URL="https://<dokploy server url>/api/auth"
+DOKPLOY_ORGANIZATION_ID="<organization id>"
+DOKPLOY_SECRET="<dokploy api secret>"
 ```
 
 Install deps and run:
