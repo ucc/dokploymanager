@@ -21,13 +21,21 @@ export default function WelcomeCard({ isLoggedIn }: WelcomeCardProps) {
             </CardHeader>
             <CardContent>
                 {isLoggedIn ? (
-                    <Button
-                        onClick={() => signOut()}
-                        variant="outline"
-                        className="w-full"
-                    >
-                        Sign out
-                    </Button>
+                    <div className="flex flex-col gap-2">
+                        <Button
+                            onClick={() => window.open(process.env.NEXT_PUBLIC_DOKPLOY_URL || 'https://cfy.ucc.au', '_blank')}
+                            className="w-full"
+                        >
+                            Open Dokploy
+                        </Button>
+                        <Button
+                            onClick={() => signOut()}
+                            variant="outline"
+                            className="w-full"
+                        >
+                            Sign out
+                        </Button>
+                    </div>
                 ) : (
                     <Button
                         onClick={() => signIn("keycloak")}
