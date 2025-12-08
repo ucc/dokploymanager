@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 import { resolveAxfr } from 'dns-axfr'
 
-const DNS_NAMESERVER = process.env.DNS_NAMESERVER || '130.95.13.2'
-const DNS_ZONE = process.env.DNS_ZONE || 'ucc.au'
+const DNS_NAMESERVER = process.env.DNS_NAMESERVER!
+const DNS_ZONE = process.env.DNS_ZONE!
 
 // Cache configuration
 const CACHE_TTL = 5 * 60 * 1000 // 5 minutes in milliseconds
