@@ -10,15 +10,16 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import DomainItem from "./domain-item"
+import { DomainWithSource } from "@/types/domain"
 
 interface DomainsResponse {
     success: boolean
-    domains?: string[]
+    domains?: DomainWithSource[]
     message?: string
 }
 
 export default function DomainsList() {
-    const [domains, setDomains] = useState<string[]>([])
+    const [domains, setDomains] = useState<DomainWithSource[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
     const [searchQuery, setSearchQuery] = useState("")
@@ -45,8 +46,8 @@ export default function DomainsList() {
         fetchDomains()
     }, [])
 
-    const filteredDomains = domains.filter(domain =>
-        domain.toLowerCase().includes(searchQuery.toLowerCase())
+    const filteredDomains = domains.filter(item =>
+        item.domain.toLowerCase().includes(searchQuery.toLowerCase())
     )
 
     return (
@@ -86,8 +87,8 @@ export default function DomainsList() {
 
                     {!loading && !error && filteredDomains.length > 0 && (
                         <div className="flex flex-col gap-2">
-                            {filteredDomains.map((domain) => (
-                                <DomainItem key={domain} url={domain} />
+                            {filteredDomains.map((item) => (
+                                <DomainItem key={item.domain} url={item.domain} source={item.source} />
                             ))}
                         </div>
                     )}
